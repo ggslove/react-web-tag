@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { ILeftData, IPage } from 'models/task';
+import { ILeftData, IPage } from 'src/models/task';
 
 // 任务
 class Task {
