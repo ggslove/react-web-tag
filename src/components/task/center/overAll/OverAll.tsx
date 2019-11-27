@@ -38,7 +38,7 @@ export default class OverAll extends  React.Component<IProps> {
               <Col md={4}>
                 <Card>
                   <Card.Item>
-                    <Text className="card-title">已暂停任务</Text>
+                    <Text className="card-title">已停止任务</Text>
                     <div><span className="card-num stop">0个</span></div>
                   </Card.Item>
                 </Card>
