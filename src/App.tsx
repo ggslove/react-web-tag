@@ -4,6 +4,7 @@ import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { createBrowserHistory } from 'history';
 import {HashRouter, Route, Switch} from 'react-router-dom';
 import { initializeIcons } from '@uifabric/icons';
+import { hot } from 'react-hot-loader/root'
 import Head from 'src/components/head';
 import { rootStore } from './store';
 import './index.scss';
@@ -78,4 +79,4 @@ class App extends  React.Component {
   }
 }
 
-export default App;
+export default process.env.NODE_ENV === "development" ? hot(App) : App;

@@ -2,10 +2,7 @@
   "extends": "../react-app-zl/tsconfig.json",
   "compilerOptions": {
     "experimentalDecorators": true,
-    "baseUrl": ".",
-    "paths": {
-      "src/*": ["src/*"]
-    }
+    "baseUrl": "."
   },
   "include": [
     "./src/services/index.d.ts",
