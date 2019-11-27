@@ -155,7 +155,8 @@
           .right-button-group {
             float: right;
             padding-top: 6px;
-            height: 30px;
+            height: 24px;
+            line-height: 24px;
             .ms-Button {
               height: 24px;
               max-height: none;
@@ -164,6 +165,38 @@
               max-width: none;
               min-width: auto;
               margin-right: 5px;
+              float: left;
+            }
+            .label {
+              font-size: 14px;
+              font-weight: 600;
+              margin-right: 5px;
+              float: left;
+            }
+            .ms-TextField {
+              display: inline-block;
+              height: 24px;
+              margin-right: 5px;
+              float: left;
+              .ms-TextField-fieldGroup {
+                height: 24px;
+                width: 120px;
+              }
+            }
+            .ms-Dropdown-container {
+              display: inline-block;
+              top: -9px;
+              height: 24px;
+              width: 120px;
+              margin-right: 5px;
+              float: left;
+              .ms-Dropdown-title, .ms-Dropdown-caretDownWrapper {
+                height: 24px;
+                line-height: 24px;
+              }
+            }
+            .search {
+              margin-left: 5px;
             }
           }
         }
@@ -188,6 +221,17 @@
             background-color: #dde2e4;
           }
         }
+      }
+    }
+  }
+  .no-data {
+    height: 100%;
+    .ms-Image {
+      height: 100%;
+      text-align: center;
+      img {
+        height: 100%;
+        display: inline-block;
       }
     }
   }

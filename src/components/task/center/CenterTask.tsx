@@ -1,8 +1,6 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { Card } from '@uifabric/react-cards';
-import { Text, PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
-import { Row, Col, Grid } from 'react-flexbox-grid';
+import { Image } from 'office-ui-fabric-react';
 import { System, Task } from "src/store";
 import OverAll from './overAll/OverAll';
 
@@ -14,9 +12,21 @@ interface IProps {
 @observer
 export default class CenterTask extends  React.Component<IProps> {
   render() {
+    const { task, system } = this.props;
+    const { activeId } = task;
+    const { width } = system;
+    if (activeId) {
+      if (activeId === 'ALL') {
+        return (
+          <div className="center-task">
+            <OverAll {...this.props} />
+          </div>
+        );
+      }
+    }
     return (
-      <div className="center-task">
-        <OverAll {...this.props} />
+      <div className="no-data" style={{ width: width - 291, marginLeft: 291 }} >
+        <Image src='/img/no-data1.png'/>
       </div>
     );
   }

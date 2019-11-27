@@ -2,7 +2,7 @@
   "name": "@zhili/react-web-tag",
   "version": "1.0.0",
   "scripts": {
-    "start": "react-app-rewired start ",
+    "start": "react-scripts start ",
     "build": "node script/build.js"
   },
   "dependencies": {
