@@ -21,7 +21,7 @@ export default class LeftTask extends  React.Component<IProps> {
       <div className='left-task' style={{ height: mainHeight - 20 }}>
         <Label className="head-bar">
           <Text variant="small" className="font600" >任务中心</Text>
-          <div className='add-action'>
+          <div className='add-action' title='添加任务'>
             <Icon iconName="CalculatorAddition" />
           </div>
         </Label>

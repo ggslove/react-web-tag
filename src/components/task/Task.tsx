@@ -2,7 +2,7 @@ import { inject, observer } from "mobx-react";
 import React from "react";
 import { System, Task } from "src/store";
 import LeftTask from './left/LeftTask';
-
+import CenterTask from './center/CenterTask';
 interface IProps {
   system: System,
   task: Task,
@@ -17,6 +17,7 @@ export default class TaskDom extends  React.Component<IProps> {
     return (
       <div className="task" style={ { height: mainHeight } }>
          <LeftTask system={system} task={task} />
+         <CenterTask system={system} task={task} />
       </div>
     );
   }
