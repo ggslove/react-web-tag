@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { ILeftData, IPage } from 'src/models/task';
+import { ILeftData, ITask } from 'src/models/task';
 
 // 任务
 class Task {
@@ -15,19 +15,36 @@ class Task {
       taskList: [
         {
           name: '任务清单1',
-          taskHistory: [{ name: '历史清单1' }],
-          pagination: { current: 0, total: 0, pageSize: 10 },
-          isExpand: false,
+          description: '描述1',
+          id: '1',
+        },
+        {
+          name: '任务清单2',
+          description: '描述2',
+          id: '2',
         }
       ],
     };
-    this.activeId = '';
+    this.activeId = 'ALL';
   }
 
   @action changeLeftName = (name: string) => {
     this.leftData.name = name;
-  }
+  };
 
+  @action changeActiveId = (activeId: string) => {
+    this.activeId = activeId;
+  };
+
+  @action changeLeftTask = (task: ITask) => {
+    const taskList = this.leftData.taskList;
+    this.leftData.taskList = taskList.map((item: ITask) => {
+      if (item.id === task.id) {
+        return task;
+      }
+      return item;
+    });
+  };
 }
 
 export default Task;

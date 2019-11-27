@@ -44,13 +44,13 @@
       font-size: 12px;
       width: calc(100% + 20px);
       margin-left: -10px;
-      .overall, .task-title, .task-history-item {
+      .overall, .task-item {
         height: 32px;
         line-height: 32px;
         padding-left: 12px;
         cursor: pointer;
       }
-      .overall, .task-title, .task-history-item {
+      .overall, .task-item {
         i {
           font-size: 14px;
           float: left;
@@ -58,15 +58,16 @@
         }
         .title-name {
           display: inline-block;
-          width: calc(100% - 30px);
+          width: calc(100% - 50px);
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-      }
-      .task-history {
-        .task-history-item {
-          padding-left: 24px;
+        .edit-icon {
+          float: right;
+          font-size: 12px;
+          font-weight: 600;
+          visibility: hidden;
         }
       }
       .overall {
@@ -74,23 +75,29 @@
           color: #2b569a;
         }
       }
-      .overall:hover, .task-history-item:hover {
+      .overall:not(.active):hover, .task-item:not(.active):hover {
         background-color: #d4e0f4;
         .title-name {
           color: #2b569a;
         }
       }
-      .task-history-item:hover {
-        i {
+      .task-item:hover {
+        i:not(.edit-icon) {
+          color: #2b569a;
+        }
+        .edit-icon {
+          visibility: visible;
+        }
+        .edit-icon:hover {
           color: #2b569a;
         }
       }
-      .task-title:hover {
+      .task-item:not(.active):hover {
         background-color: #d4e0f4;
       }
       .active {
         background-color: #fff;
-        .title-name {
+        .title-name, i {
           color: #2b569a;
         }
       }

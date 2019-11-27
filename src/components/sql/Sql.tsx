@@ -23,7 +23,7 @@ export default class SqlDom extends  React.Component<IProps> {
       <div className="sql" style={{ height: mainHeight }}>
         <LeftSql system={system} sql={sql} />
         { activeSqlId ?
-          <div>
+          <div style={{ height: '100%' }}>
             <CenterSql system={ system } sql={ sql } />
             <RightSql system={ system } sql={ sql } />
           </div> :

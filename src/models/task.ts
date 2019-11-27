@@ -1,8 +1,7 @@
 export interface ITask {
   name: string;
-  taskHistory: { name: string }[];
-  isExpand: boolean;
-  pagination: IPage;
+  description: string;
+  id: string;
 }
 
 export interface ILeftData {

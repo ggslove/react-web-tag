@@ -24,7 +24,7 @@ export default class BuildDom extends  React.Component<IProps> {
         <LeftBuild system={system} build={build} />
         {
           activeTagId ?
-            <div>
+            <div style={{ height: '100%' }}>
               <CenterBuild system={system} build={build} />
               <RightBuild system={system} build={build} />
             </div>
