@@ -6,7 +6,6 @@ import {HashRouter, Route, Switch} from 'react-router-dom';
 import { initializeIcons } from '@uifabric/icons';
 import { hot } from 'react-hot-loader/root'
 import Head from 'src/components/head';
-import { rootStore } from './store';
 import './index.scss';
 import Login from 'src/components/login';
 import InJect from 'src/util/InJect';
@@ -71,12 +70,8 @@ class Entry extends React.Component<IProps> {
 @observer
 class App extends  React.Component {
   render() {
-    return (
-      <Provider {...rootStore}>
-        <InJect Component={Entry} />
-      </Provider>
-    )
+    return  <InJect Component={Entry} />
   }
 }
 
-export default process.env.NODE_ENV === "development" ? hot(App) : App;
+export default App;
