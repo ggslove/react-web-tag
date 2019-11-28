@@ -1,7 +1,6 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { DetailsListLayoutMode, IColumn, Selection, Icon } from "office-ui-fabric-react";
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { DetailsListLayoutMode, IColumn, Icon, SelectionMode } from "office-ui-fabric-react";
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 import { IPage } from "../../../../models/task";
 import { System, Task } from "../../../../store";
@@ -17,7 +16,6 @@ interface IDetailsListBasicExampleItem {
 }
 
 interface IProps {
-  pagination: IPage;
   system: System,
   task: Task,
 }
@@ -26,10 +24,11 @@ interface IState {
   isShow: boolean;
   items: IDetailsListBasicExampleItem[];
   selectionDetails: {};
+  pagination: IPage;
 }
 
 @observer
-export default class TaskTable extends  React.Component<IProps, IState> {
+export default class TaskHistory extends  React.Component<IProps, IState> {
 
   constructor(props: IProps) {
     super(props);
@@ -44,25 +43,8 @@ export default class TaskTable extends  React.Component<IProps, IState> {
         action: '',
       });
     }
-    this.state = { isShow: true,items: _allItems, selectionDetails: {} }
+    this.state = { isShow: true,items: _allItems, selectionDetails: {}, pagination: { current: 0, total: 0, pageSize: 10 } }
   }
-
-
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  }
-
-  _selection = new Selection({
-    onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
-  });
 
   _columns: IColumn[] = [
     { key: 'column1', name: '任务名', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
@@ -106,25 +88,22 @@ export default class TaskTable extends  React.Component<IProps, IState> {
   };
 
   render() {
-    const { pagination } = this.props;
-    const { items } = this.state;
+    const { items, pagination } = this.state;
     return (
-      <div className="task-table">
-        <MarqueeSelection selection={this._selection}>
-          <ShimmeredDetailsList
-            items={items}
-            columns={this._columns}
-            setKey="set"
-            onRenderItemColumn={this._renderItemColumn}
-            layoutMode={DetailsListLayoutMode.justified}
-            enableShimmer={false}
-            selection={this._selection}
-            selectionPreservedOnEmptyClick={true}
-            ariaLabelForSelectionColumn="Toggle selection"
-            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
-          />
-        </MarqueeSelection>
+      <div className="task-history">
+        <ShimmeredDetailsList
+          items={items}
+          columns={this._columns}
+          setKey="set"
+          onRenderItemColumn={this._renderItemColumn}
+          selectionMode={SelectionMode.none}
+          layoutMode={DetailsListLayoutMode.justified}
+          enableShimmer={false}
+          selectionPreservedOnEmptyClick={true}
+          ariaLabelForSelectionColumn="Toggle selection"
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          checkButtonAriaLabel="Row checkbox"
+        />
         <Pagination
           pageCount={Math.ceil(pagination.total / pagination.pageSize)}
           itemsPerPage={pagination.pageSize}

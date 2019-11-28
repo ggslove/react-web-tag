@@ -14,11 +14,13 @@ interface IProps {
 
 interface IState {
   pagination: IPage;
+  name: string;
+  status: string;
 }
 
 const options: IDropdownOption[] = [
   { key: 'ALL', text: '全部' },
-  { key: 'RUNNING', text: '运行中' },
+  { key: 'RUNNING', text: '已运行' },
   { key: 'STOP', text: '已停止' },
 ];
 
@@ -27,11 +29,20 @@ export default class OverAll extends  React.Component<IProps, IState> {
 
   constructor(props: IProps) {
     super(props);
-    this.state = { pagination: { current: 0, total: 0, pageSize: 10 }};
+    this.state = {
+      pagination: { current: 0, total: 0, pageSize: 10 },
+      name: '', status: 'ALL',
+    };
   }
 
+  private _onChange = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number): void => {
+    if (option) {
+      this.setState({ status: option.key as string });
+    }
+  };
+
   render() {
-    const { pagination } = this.state;
+    const { pagination, name, status } = this.state;
     return (
       <div className="over-all">
         <div className="center-top">
@@ -70,15 +81,15 @@ export default class OverAll extends  React.Component<IProps, IState> {
             <Text>(共计10)</Text>
             <div className="right-button-group">
               <span className="label">任务名</span>
-              <TextField />
+              <TextField value={name} onChange={(e, newValue) => this.setState({ name: newValue || '' })} />
               <span className="label">状态</span>
-              <Dropdown options={options} />
+              <Dropdown options={options} selectedKey={status} onChange={this._onChange}/>
               <PrimaryButton text="查询" className="search" />
               <PrimaryButton text="启动" />
               <DefaultButton text="停止" />
             </div>
           </div>
-          <TaskTable {...this.props} pagination={pagination} />
+          <TaskTable {...this.props} pagination={pagination}  />
         </div>
       </div>
     );

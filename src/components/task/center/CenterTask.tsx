@@ -3,6 +3,7 @@ import React from "react";
 import { Image } from 'office-ui-fabric-react';
 import { System, Task } from "src/store";
 import OverAll from './overAll/OverAll';
+import TaskDetails from './taskDetails/TaskDetails';
 
 interface IProps {
   system: System,
@@ -23,6 +24,11 @@ export default class CenterTask extends  React.Component<IProps> {
           </div>
         );
       }
+      return (
+        <div className="center-task">
+          <TaskDetails {...this.props} />
+        </div>
+      )
     }
     return (
       <div className="no-data" style={{ width: width - 291, marginLeft: 291 }} >

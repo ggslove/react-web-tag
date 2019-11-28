@@ -1,10 +1,9 @@
 import React from 'react';
-import { inject, observer, Provider } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { createBrowserHistory } from 'history';
 import {HashRouter, Route, Switch} from 'react-router-dom';
 import { initializeIcons } from '@uifabric/icons';
-import { hot } from 'react-hot-loader/root'
 import Head from 'src/components/head';
 import './index.scss';
 import Login from 'src/components/login';

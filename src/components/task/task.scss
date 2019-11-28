@@ -155,10 +155,10 @@
           .right-button-group {
             float: right;
             padding-top: 6px;
-            height: 24px;
-            line-height: 24px;
+            height: 30px;
+            line-height: 30px;
             .ms-Button {
-              height: 24px;
+              height: 30px;
               max-height: none;
               min-height: auto;
               padding: 0 6px;
@@ -175,24 +175,24 @@
             }
             .ms-TextField {
               display: inline-block;
-              height: 24px;
+              height: 30px;
               margin-right: 5px;
               float: left;
               .ms-TextField-fieldGroup {
-                height: 24px;
+                height: 30px;
                 width: 120px;
               }
             }
             .ms-Dropdown-container {
               display: inline-block;
               top: -9px;
-              height: 24px;
+              height: 30px;
               width: 120px;
               margin-right: 5px;
               float: left;
               .ms-Dropdown-title, .ms-Dropdown-caretDownWrapper {
-                height: 24px;
-                line-height: 24px;
+                height: 30px;
+                line-height: 30px;
               }
             }
             .search {
@@ -211,8 +211,8 @@
             color: red;
           }
           .action-col {
-            height: 24px;
-            width: 24px;
+            height: 30px;
+            width: 30px;
             text-align: center;
             font-size: 16px;
             cursor: pointer;
@@ -220,6 +220,65 @@
           .action-col:hover {
             background-color: #dde2e4;
           }
+        }
+        .ms-Pagination-container {
+          text-align: right;
+          margin-right: 25px;
+          margin-top: 5px;
+        }
+      }
+    }
+    .task-details {
+      height: 100%;
+      .task-top {
+        height: 80px;
+        .task-name {
+          font-size: 24px;
+          display: inline-block;
+          max-width: 400px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .ms-Button {
+          height: 28px;
+          padding: 0;
+          min-width: auto;
+          width: 50px;
+          margin-top: 4px;
+          margin-left: 20px;
+        }
+      }
+      .task-center {
+        .ms-FocusZone {
+          border-bottom: 1px solid #d7e0e0;
+          padding-bottom: 5px;
+        }
+        .task-history {
+          height: calc(100% - 35px);
+          overflow-y: auto;
+          overflow-x: hidden;
+          .running {
+            color: green;
+          }
+          .stop {
+            color: red;
+          }
+          .action-col {
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+          }
+          .action-col:hover {
+            background-color: #dde2e4;
+          }
+        }
+        .ms-Pagination-container {
+          text-align: right;
+          margin-right: 25px;
+          margin-top: 5px;
         }
       }
     }
