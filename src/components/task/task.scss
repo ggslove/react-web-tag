@@ -250,12 +250,27 @@
         }
       }
       .task-center {
-        .ms-FocusZone {
+        .ms-Pivot {
           border-bottom: 1px solid #d7e0e0;
           padding-bottom: 5px;
+          .ms-Pivot-text {
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+          }
+          i {
+            visibility: hidden;
+          }
+          .ms-Pivot-link:hover {
+            i {
+              visibility: visible;
+              color: red;
+            }
+          }
         }
         .task-history {
-          height: calc(100% - 35px);
           overflow-y: auto;
           overflow-x: hidden;
           .running {

@@ -18,7 +18,6 @@ interface IDetailsListBasicExampleItem {
 interface IProps {
   system: System,
   task: Task,
-  pivotClick: (item: any) => void;
 }
 
 interface IState {
@@ -37,7 +36,7 @@ const columns: IColumn[] = [
 ];
 
 @observer
-export default class TaskHistory extends  React.Component<IProps, IState> {
+export default class TaskRecord extends  React.Component<IProps, IState> {
 
   constructor(props: IProps) {
     super(props);
@@ -56,34 +55,7 @@ export default class TaskHistory extends  React.Component<IProps, IState> {
   }
 
   _pivotClick = (item: IDetailsListBasicExampleItem) => {
-    const { pivotClick } = this.props;
-    pivotClick(item);
-  };
-
-  _renderItemColumn = (item?: IDetailsListBasicExampleItem, index?: number, column?: IColumn) => {
-    if (item && column) {
-      const fieldContent = item[column.fieldName as keyof IDetailsListBasicExampleItem] as string;
-      switch (column.fieldName) {
-        case 'name':
-          if(item.resultNum > 0) {
-            return (
-              <Link onClick={() => this._pivotClick(item) }>
-                {fieldContent}
-              </Link>
-            );
-          }
-          return (
-            <span>{fieldContent}</span>
-          );
-        case 'status':
-          if(item.status) {
-            return (<div className="running">成功</div>);
-          }
-          return (<div className="stop">失败</div>);
-        default:
-          return <span>{fieldContent}</span>;
-      }
-    }
+    console.log(item);
   };
 
   private _onColumnClick = (ev?: React.MouseEvent<HTMLElement>, column?: IColumn): void => {
@@ -115,7 +87,6 @@ export default class TaskHistory extends  React.Component<IProps, IState> {
           items={items}
           columns={columns}
           setKey="set"
-          onRenderItemColumn={this._renderItemColumn}
           selectionMode={SelectionMode.none}
           layoutMode={DetailsListLayoutMode.justified}
           enableShimmer={false}
