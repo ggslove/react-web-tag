@@ -110,7 +110,7 @@ export default class TaskHistory extends  React.Component<IProps, IState> {
     const { mainHeight } = this.props.system;
     const { items, pagination, columns } = this.state;
     return (
-      <div className="task-history" style={{ height: mainHeight - 200 }}>
+      <div className="task-history">
         <ShimmeredDetailsList
           items={items}
           columns={columns}

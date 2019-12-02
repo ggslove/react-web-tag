@@ -1,0 +1,92 @@
+.task-submit {
+  overflow-y: auto;
+  padding: 0 140px;
+  scroll-behavior:smooth;
+  .ant-anchor-wrapper {
+    position: absolute;
+    right: 80px;
+    top: 30%;
+    padding-left: 10px;
+    .ant-anchor-ink-ball {
+      display: inline-block;
+      top: 10.5px;
+    }
+    .ball0 {
+      top: 10.5px !important;
+    }
+    .ball1 {
+      top: 73.5px !important;
+    }
+    .ball2 {
+      top: 136.5px !important;
+    }
+    .ball3 {
+      top: 199.5px !important;
+    }
+    .ant-anchor-link {
+      height: 50px;
+      a {
+        color: #4e5155;
+      }
+      a:hover {
+        color: #2b569a;
+      }
+    }
+    .active {
+      a {
+        color: #2b569a;
+      }
+    }
+  }
+  .center {
+    .task-title {
+      height: 40px;
+      display: block;
+      line-height: 40px;
+      text-align: center;
+      color: #000;
+    }
+    .step-title {
+      font-size: 15px;
+      color: #000;
+      padding-left: 10px;
+      border-left: 4px solid #eda933;
+      .not-selected {
+        color: red;
+        font-size: 12px;
+      }
+      .selected {
+        color: #2b569a;
+        font-size: 12px;
+      }
+    }
+    .submit-button {
+      margin:10px 0 5px;
+      text-align: center;
+      .ms-Button--primary {
+        margin-right: 20px;
+      }
+    }
+    .tag-selector {
+      padding: 0 10px;
+      .ms-Label {
+        padding-left: 5px;
+        .ms-TextField {
+          width: 200px;
+          display: inline-block;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+      .ant-pagination {
+        text-align: right;
+        margin-top: 5px;
+      }
+    }
+    .basic-info {
+      .ms-TextField {
+        width: 40%;
+      }
+    }
+  }
+}

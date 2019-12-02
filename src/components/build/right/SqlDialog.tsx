@@ -16,7 +16,7 @@ import {
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Pagination } from 'antd';
-import { mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { System } from "src/store";
 
 interface IProps {

@@ -20,6 +20,7 @@ interface IProps {
   pagination: IPage;
   system: System,
   task: Task,
+  changeSelectedKeys: (selectedKeys: string[]) => void;
 }
 
 interface IState {
@@ -61,7 +62,13 @@ export default class TaskTable extends  React.Component<IProps, IState> {
   }
 
   _selection = new Selection({
-    onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
+    onSelectionChanged: () => {
+      const { changeSelectedKeys } = this.props;
+      const selections = this._selection.getSelection();
+      const keys = selections.map((item: any) => { return item.key });
+      changeSelectedKeys(keys);
+      this.setState({ selectionDetails: this._getSelectionDetails() })
+    }
   });
 
   _columns: IColumn[] = [

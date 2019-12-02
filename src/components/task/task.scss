@@ -213,6 +213,7 @@
           .action-col {
             height: 30px;
             width: 30px;
+            line-height: 30px;
             text-align: center;
             font-size: 16px;
             cursor: pointer;
@@ -249,6 +250,32 @@
           margin-left: 20px;
         }
       }
+      .action-bar {
+        height: 44px;
+        line-height: 44px;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-block;
+        padding: 0 8px;
+        i {
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
+      .task-cog {
+        transition: height 0.5s;
+        height: 300px;
+        border: 1px solid red;
+        padding: 10px;
+      }
+      .hide {
+        height: 0;
+        border: 1px solid #fff;
+        padding: 0;
+        .task-content {
+          display: none;
+        }
+      }
       .task-center {
         .ms-Pivot {
           border-bottom: 1px solid #d7e0e0;
@@ -271,7 +298,6 @@
           }
         }
         .task-history {
-          overflow-y: auto;
           overflow-x: hidden;
           .running {
             color: green;
@@ -282,6 +308,7 @@
           .action-col {
             height: 30px;
             width: 30px;
+            line-height: 30px;
             text-align: center;
             font-size: 16px;
             cursor: pointer;
@@ -292,8 +319,7 @@
         }
         .ms-Pagination-container {
           text-align: right;
-          margin-right: 25px;
-          margin-top: 5px;
+          margin: 5px 0 5px 25px;
         }
       }
     }
@@ -307,6 +333,22 @@
         height: 100%;
         display: inline-block;
       }
+    }
+  }
+  .stop-button {
+    background-color: #de1313;
+    color: #fff;
+  }
+  .stop-button:hover {
+    background-color: red;
+  }
+  .stop-button:active {
+    background-color: #de1313;
+  }
+  .stop-button.is-disabled {
+    background-color: #de4125;
+    .ms-Button-textContainer {
+      color: rgb(161, 159, 157);
     }
   }
 }

@@ -15,6 +15,7 @@ import Back from 'src/components/back';
 import BuildDom from 'src/components/build';
 import SqlDom from 'src/components/sql';
 import TaskDom from 'src/components/task';
+import TaskSubmitDom from 'src/components/taskSubmit';
 const browserHistory = createBrowserHistory();
 const routerStore =  new RouterStore();
 // 同步路由与mobx的数据状态
@@ -52,6 +53,7 @@ class Entry extends React.Component<IProps> {
               <Route exact path="/build" component={BuildDom}/>
               <Route exact path="/sql" component={SqlDom}/>
               <Route exact path="/task" component={TaskDom}/>
+              <Route exact path="/taskSubmit" component={TaskSubmitDom}/>
             </Switch>
           </HashRouter>
         </div>

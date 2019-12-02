@@ -16,6 +16,7 @@ interface IState {
   pagination: IPage;
   name: string;
   status: string;
+  selectedKeys: string[];
 }
 
 const options: IDropdownOption[] = [
@@ -27,11 +28,13 @@ const options: IDropdownOption[] = [
 @observer
 export default class OverAll extends  React.Component<IProps, IState> {
 
+  private taskTableRef: any;
+
   constructor(props: IProps) {
     super(props);
     this.state = {
       pagination: { current: 0, total: 0, pageSize: 10 },
-      name: '', status: 'ALL',
+      name: '', status: 'ALL', selectedKeys: [],
     };
   }
 
@@ -41,8 +44,13 @@ export default class OverAll extends  React.Component<IProps, IState> {
     }
   };
 
+  private _changeSelectedKeys = (selectedKeys: string[]) => {
+    console.log(selectedKeys);
+    this.setState({ selectedKeys });
+  };
+
   render() {
-    const { pagination, name, status } = this.state;
+    const { pagination, name, status, selectedKeys } = this.state;
     return (
       <div className="over-all">
         <div className="center-top">
@@ -85,11 +93,11 @@ export default class OverAll extends  React.Component<IProps, IState> {
               <span className="label">状态</span>
               <Dropdown options={options} selectedKey={status} onChange={this._onChange}/>
               <PrimaryButton text="查询" className="search" />
-              <PrimaryButton text="启动" />
-              <DefaultButton text="停止" />
+              <PrimaryButton text="启动" disabled={selectedKeys.length === 0} />
+              <DefaultButton text="停止" className="stop-button" disabled={selectedKeys.length === 0} />
             </div>
           </div>
-          <TaskTable {...this.props} pagination={pagination}  />
+          <TaskTable {...this.props} pagination={pagination} ref={e => this.taskTableRef = e} changeSelectedKeys={this._changeSelectedKeys}  />
         </div>
       </div>
     );

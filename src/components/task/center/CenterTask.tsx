@@ -25,7 +25,7 @@ export default class CenterTask extends  React.Component<IProps> {
         );
       }
       return (
-        <div className="center-task">
+        <div className="center-task"  style={{ overflowY: 'auto' }}>
           <TaskDetails {...this.props} />
         </div>
       )
