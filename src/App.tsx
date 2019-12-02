@@ -2,6 +2,10 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { createBrowserHistory } from 'history';
+import { ConfigProvider } from 'antd';
+import zh_CN from 'antd/es/locale-provider/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 import {HashRouter, Route, Switch} from 'react-router-dom';
 import { initializeIcons } from '@uifabric/icons';
 import Head from 'src/components/head';
@@ -20,6 +24,7 @@ const browserHistory = createBrowserHistory();
 const routerStore =  new RouterStore();
 // 同步路由与mobx的数据状态
 const history = syncHistoryWithStore(browserHistory, routerStore);
+moment.locale('zh-cn');
 
 interface IProps {
   system: System,
@@ -71,7 +76,7 @@ class Entry extends React.Component<IProps> {
 @observer
 class App extends  React.Component {
   render() {
-    return  <InJect Component={Entry} />
+    return  <ConfigProvider locale={zh_CN}><InJect Component={Entry} /></ConfigProvider>
   }
 }
 

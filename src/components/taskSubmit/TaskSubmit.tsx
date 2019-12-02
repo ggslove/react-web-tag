@@ -2,11 +2,13 @@ import { inject, observer } from "mobx-react";
 import React from "react";
 import { Anchor } from 'antd';
 import classNames from "classnames";
-import { Text, PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
+import { DefaultButton, PrimaryButton, Text } from 'office-ui-fabric-react';
+import * as moment from 'moment';
 import { System } from "src/store";
 import TagSelector from './TagSelector';
 import BasicInfo from './BasicInfo';
-import { tagTypes } from "../../constants/commonConstants";
+import TimerInfo from './TimerInfo';
+import { tagTypes, timeRates } from "src/constants/commonConstants";
 
 const { Link } = Anchor;
 
@@ -18,6 +20,7 @@ interface IState {
   current: string,
   selectedTag: { code: string, text: string } | null,
   basicInfos: { name: string, description: string, type: string },
+  timerInfo: { timeRate: timeRates | '', dayValue?: string, weekValue: string[], monthValue: string[] },
 }
 
 interface IStep {
@@ -37,7 +40,12 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
 
   constructor(props: IProps) {
     super(props);
-    this.state = { current: 'tag', selectedTag: null, basicInfos: { name: '', description: '', type: tagTypes.people } } ;
+    this.state = {
+      current: 'tag',
+      selectedTag: null,
+      basicInfos: { name: '', description: '', type: tagTypes.people },
+      timerInfo: { timeRate: timeRates.day, dayValue: undefined, monthValue: [], weekValue: [] },
+    } ;
   }
 
   componentDidMount(): void {
@@ -46,6 +54,10 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
 
   _changeBasicInfo = (basicInfos: { name: string, description: string, type: string }) => {
     this.setState({ basicInfos });
+  };
+
+  _changeTimerInfo = (timerInfo: { timeRate: timeRates | '', dayValue?: string, weekValue: string[], monthValue: string[] }) => {
+    this.setState({ timerInfo });
   };
 
   _changeSelectedTag = (selectedTag: { code: string, text: string } | null) => {
@@ -78,10 +90,10 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
     }
   };
 
-  _scrollBody = (e: any) => {
+  _scrollBody = () => {
     const taskSubmit = document.querySelector('.task-submit');
     if (taskSubmit) {
-      var wst = taskSubmit.scrollTop;
+      const wst = taskSubmit.scrollTop;
       stepList.forEach((step: IStep, ins: number) => {
         const stepDom = document.querySelector(`#${step.code}`);
         if (stepDom) {
@@ -101,7 +113,7 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
 
   render() {
     const { mainHeight } = this.props.system;
-    const { current, selectedTag, basicInfos } = this.state;
+    const { current, selectedTag, basicInfos, timerInfo } = this.state;
     return (
       <div id='wy-scroll-layout' style={{ height: mainHeight }} className="task-submit" onScroll={this._scrollBody} >
         <Anchor affix={false} onClick={(e, f) => {this._clickStep(f)}} showInkInFixed={true} >
@@ -130,6 +142,7 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
           </div>
           <div id='timer' style={{ height: 500 }}>
             <div className='step-title'>定时配置</div>
+            <TimerInfo {...timerInfo} changeTimerInfo={this._changeTimerInfo} />
           </div>
           <div className='submit-button'>
             <PrimaryButton text='确认' />

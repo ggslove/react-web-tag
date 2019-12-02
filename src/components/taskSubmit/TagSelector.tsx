@@ -72,7 +72,7 @@ export default class TagSelector extends  React.Component<IProps, IState> {
     return (
       <div className="tag-selector">
         <Label>
-          <Text>标签名:</Text>
+          <Text className='tag-name'>标签名:</Text>
           <TextField value={name} onChange={(e, newValue) => this.setState({ name: newValue || '' })} />
           <PrimaryButton text='搜索' />
         </Label>

@@ -66,6 +66,22 @@ export enum textAligns {
   right = 'right',
 }
 
+export enum timeRates {
+  day = 'day',
+  week = 'week',
+  month = 'month',
+}
+
+export const weekDays = [
+  { text: '周一', code: '1' },
+  { text: '周二', code: '2' },
+  { text: '周三', code: '3' },
+  { text: '周四', code: '4' },
+  { text: '周五', code: '5' },
+  { text: '周六', code: '6' },
+  { text: '周日', code: '7' },
+];
+
 export const typeOptions: IDropdownOption[] = [
   { key: 'labelHeader', text: '文本', itemType: DropdownMenuItemType.Header },
   { key: 'label', text: '描述' },
