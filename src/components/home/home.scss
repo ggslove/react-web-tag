@@ -16,6 +16,11 @@
         .ms-Button {
           height: 36px;
           background-color: transparent;
+          i {
+            color: #2b569a;
+            font-size: 14px;
+            font-weight: 600;
+          }
           .ms-Button-label {
             font-size: 12px;
             color: #5a7582;

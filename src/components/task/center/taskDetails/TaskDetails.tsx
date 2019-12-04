@@ -60,7 +60,7 @@ export default class TaskDetails extends  React.Component<IProps, IState> {
     const { pivotItems } = _.cloneDeep(this.state);
     let isExist = false;
     pivotItems.forEach((pivotItem: { code: string, text: string }) => {
-      if (pivotItem.code === `${item.key}`) {
+      if (`${pivotItem.code}` === `${item.key}`) {
         isExist = true;
       }
     });

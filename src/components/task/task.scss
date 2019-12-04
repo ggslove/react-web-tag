@@ -1,12 +1,13 @@
 .task {
   .left-task {
     width: 270px;
-    background-color: #e8ebed;
+    background-color: #ece8ed;
     box-shadow: 1px 0 1px 0 rgba(0,0,0,.06), inset -1px 0 0 0 rgba(255,255,255,.2);
     border-right: 1px solid #d3caca;
     padding: 10px;
     float: left;
     .head-bar {
+      color: #7719aa;
       .add-action {
         background-color: transparent;
         height: 22px;
@@ -18,11 +19,11 @@
         text-align: center;
         cursor: pointer;
         i {
-          color: black;
+          color: #7719aa;
         }
       }
       .add-action:hover {
-        background-color: #cfd6da;
+        background-color: #d8cfda;
       }
       .add-action:active {
         background-color: transparent;
@@ -32,13 +33,16 @@
       background-color: transparent;
       height: 28px;
       margin-bottom: 5px;
-      border-color: #98b5dd;
+      border-color: #c598dd;
+      i {
+        color: #7719aa;
+      }
       .ms-SearchBox-iconContainer, input {
         font-size: 12px;
       }
     }
     .is-active {
-      border-bottom: 2px solid #4f82d3;
+      border-bottom: 2px solid #7719aa;
     }
     .task-list {
       overflow-y: auto;
@@ -73,38 +77,51 @@
       }
       .overall {
         i {
-          color: #2b569a;
+          color: #7719aa;
         }
       }
       .overall:not(.active):hover, .task-item:not(.active):hover {
         background-color: #d4e0f4;
         .title-name {
-          color: #2b569a;
+          color: #7719aa;
         }
       }
       .task-item:hover {
         i:not(.edit-icon) {
-          color: #2b569a;
+          color: #7719aa;
         }
         .edit-icon {
           visibility: visible;
         }
         .edit-icon:hover {
-          color: #2b569a;
+          color: #7719aa;
         }
       }
       .task-item:not(.active):hover {
-        background-color: #d4e0f4;
+        background-color: #d1a6e9;
       }
       .active {
         background-color: #fff;
         .title-name, i {
-          color: #2b569a;
+          color: #7719aa;
         }
       }
       .ant-pagination {
         text-align: center;
         font-size: 12px;
+        input:hover {
+          border-color: #ac6cce;
+        }
+        .ant-pagination-next:not(.ant-pagination-disabled):hover, .ant-pagination-prev:not(.ant-pagination-disabled):hover {
+          i {
+            color: #7719aa;
+          }
+        }
+        .ant-pagination-next:not(.ant-pagination-disabled):focus, .ant-pagination-prev:not(.ant-pagination-disabled):focus {
+          i {
+            color: #7719aa;
+          }
+        }
       }
     }
   }
@@ -150,7 +167,6 @@
           .table-desc {
             font-size: 18px;
             font-weight: 600;
-            color: rgba(10, 18, 32, 0.64);
           }
           .right-button-group {
             float: right;
@@ -182,6 +198,9 @@
                 height: 30px;
                 width: 120px;
               }
+              .ms-TextField-fieldGroup::after {
+                border-color: #7719aa;
+              }
             }
             .ms-Dropdown-container {
               display: inline-block;
@@ -193,6 +212,14 @@
               .ms-Dropdown-title, .ms-Dropdown-caretDownWrapper {
                 height: 30px;
                 line-height: 30px;
+              }
+              .ms-Dropdown:focus {
+                .ms-Dropdown-title {
+                  border-color: #7719aa;
+                }
+              }
+              .ms-Dropdown-title:hover, .ms-Dropdown-title:active {
+                border-color: #7719aa;
               }
             }
             .search {
@@ -257,6 +284,9 @@
         font-weight: 600;
         display: inline-block;
         padding: 0 8px;
+        button {
+          color: #7719aa;
+        }
         i {
           font-size: 12px;
           font-weight: 600;
@@ -280,6 +310,9 @@
         .ms-Pivot {
           border-bottom: 1px solid #d7e0e0;
           padding-bottom: 5px;
+          .is-selected::before {
+            background-color: #7719aa;
+          }
           .ms-Pivot-text {
             max-width: 120px;
             overflow: hidden;
@@ -289,12 +322,16 @@
           }
           i {
             visibility: hidden;
+            margin-left: 5px;
           }
           .ms-Pivot-link:hover {
             i {
               visibility: visible;
               color: red;
             }
+          }
+          .linkIsSelected-256::before {
+            background-color: #7719aa;
           }
         }
         .task-history {
@@ -315,6 +352,9 @@
           }
           .action-col:hover {
             background-color: #dde2e4;
+          }
+          .ms-Link {
+            color: #7719aa;
           }
         }
         .ms-Pagination-container {
@@ -350,5 +390,14 @@
     .ms-Button-textContainer {
       color: rgb(161, 159, 157);
     }
+  }
+  .ms-Button--primary {
+     background-color: #7719aa ;
+   }
+  .ms-Button--primary:hover {
+    background-color: #910fd8 ;
+  }
+  .ms-Button--primary:active {
+    background-color: #7719aa ;
   }
 }

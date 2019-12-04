@@ -20,7 +20,7 @@ export default class TagItem extends  React.Component<IProps> {
     const { checkTag, activeTagId } = build;
     return (
       <div
-        className={classNames("tag-item", {"tag-item-2": index % 2}, {active: activeTagId === `${index}`})}
+        className={classNames("tag-item", {active: activeTagId === `${index}`})}
         onClick={() => checkTag(`${index}`)}
         title={tagName}
       >

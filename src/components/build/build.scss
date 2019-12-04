@@ -4,14 +4,27 @@
     height: calc(100% - 20px);
     padding: 10px;
     float: left;
-    background-color: #e5e7e8;
-    .ms-Pivot-link {
-      height: 30px;
+    background-color: #e5ede8;
+    .ms-Pivot {
+      .is-selected::before {
+        background-color: #217346;
+      }
+      .ms-Pivot-link {
+        height: 30px;
+      }
     }
+
     .tag-list {
       overflow: hidden;
+      .is-active {
+        border-bottom: 2px solid;
+      }
       .ms-SearchBox {
         background-color: transparent;
+        border-color: #357347;
+        i {
+          color: #217346;
+        }
       }
       .tags {
         overflow-y: auto;
@@ -35,13 +48,10 @@
             visibility: hidden;
           }
         }
-        .tag-item-2 {
-          background-color: #dcdbdb;
-        }
         .tag-item:not(.active):hover {
           background-color: #c0c6ca;
           .tag-name {
-            color: #186798;
+            color: #357347;
           }
           i {
             visibility: visible;
@@ -49,18 +59,34 @@
         }
         .active {
           .tag-name {
-            color: #186798;
+            color: #357347;
             font-weight: 600;
           }
           i {
             visibility: visible;
-            color: #186798;
+            color: #357347;
             font-weight: 600;
           }
         }
       }
-      .ant-pagination {
+      .ms-Pagination-container {
         text-align: center;
+        .ms-ComboBox-container {
+          .ms-ComboBox {
+            height: 26px;
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+          .ms-ComboBox:hover {
+            border: 1px solid #357347;
+          }
+          .ms-ComboBox::after {
+            border-color: #357347;
+          }
+        }
+        .ms-Button:not(.is-disabled) {
+          color: #357347;
+        }
       }
     }
   }
@@ -73,6 +99,9 @@
     .title {
       height: 40px;
       text-align: center;
+      span {
+        color: #357347;
+      }
     }
     .show-result {
       width: calc(100% - 52px);
@@ -101,16 +130,22 @@
           }
         }
         .primary {
-          background-color: #2b579a;
+          background-color: #357347;
         }
         .primary:hover {
-          background-color: #10356d;
+          background-color: #47ae65;
+        }
+        .primary:active {
+          background-color: #357347;
         }
         .close {
           background-color: #da1b1b;
         }
         .close:not(.disable):hover {
           background-color: red;
+        }
+        .close:not(.disable):active {
+          background-color: #da1b1b;
         }
         .disable {
           cursor: not-allowed;
@@ -145,10 +180,22 @@
     height: calc(100% - 40px);
     padding: 20px;
     float: left;
-    background-color: #e5e7e8;
+    background-color: #e5ede8;
     .ms-Stack {
+      .ms-TextField-fieldGroup::after {
+        border-color: #357347;
+      }
       .ms-ChoiceField-wrapper {
         width: 75px;
+        .ms-ChoiceField-field.is-checked {
+          border-color: #357347;
+        }
+        .ms-ChoiceField-field.is-checked::before {
+          border-color: #357347;
+        }
+        .ms-ChoiceField-field.is-checked::after {
+          border-color: #357347;
+        }
       }
       .ms-ChoiceField-labelWrapper {
         height: 20px;
@@ -167,7 +214,7 @@
         }
       }
       .sql-link:hover {
-        color: #2b569a;
+        color: #357347;
       }
       .sql-review {
         height: 180px;
@@ -181,7 +228,7 @@
         word-break: break-word;
       }
       .sql-review:hover {
-        color: #2b569a;
+        color: #357347;
       }
     }
     .button-group {
@@ -212,5 +259,25 @@
   }
   .letter {
     letter-spacing: 1px;
+  }
+  .ms-Button--primary {
+    background-color: #357347 ;
+  }
+  .ms-Button--primary:hover {
+    background-color: #47ae65 ;
+  }
+  .ms-Button--primary:active {
+    background-color: #357347 ;
+  }
+  .ms-TextField-fieldGroup::after {
+    border-color: #357347;
+  }
+  .ms-Dropdown:focus {
+    .ms-Dropdown-title {
+      border-color: #357347;
+    }
+  }
+  .ms-Dropdown-title:hover, .ms-Dropdown-title:active {
+    border-color: #357347;
   }
 }

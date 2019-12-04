@@ -71,7 +71,7 @@ export default class Home extends  React.Component<IProps, IState> {
     const { isShow, items, dialogType } = this.state;
     const { mainHeight } = system;
     return (
-      <div className="home" style={{ height: mainHeight }}>
+      <div className="back" style={{ height: mainHeight }}>
         <TagCard isShow={isShow} system={system} _changeIsShow={this._changeIsShow} _openDialog={this._openDialog} />
         <Pivot>
           <PivotItem

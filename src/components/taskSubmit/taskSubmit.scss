@@ -4,12 +4,13 @@
   scroll-behavior:smooth;
   .ant-anchor-wrapper {
     position: absolute;
-    right: 80px;
+    right: 40px;
     top: 30%;
     padding-left: 10px;
     .ant-anchor-ink-ball {
       display: inline-block;
       top: 10.5px;
+      border: 2px solid #7719aa;
     }
     .ball0 {
       top: 10.5px !important;
@@ -27,14 +28,22 @@
       height: 50px;
       a {
         color: #4e5155;
+        .anticon-check-circle {
+          color: green;
+          margin-left: 5px;
+        }
+        .anticon-close-circle {
+          color: red;
+          margin-left: 5px;
+        }
       }
       a:hover {
-        color: #2b569a;
+        color: #7719aa;
       }
     }
     .active {
       a {
-        color: #2b569a;
+        color: #7719aa;
       }
     }
   }
@@ -44,19 +53,19 @@
       display: block;
       line-height: 40px;
       text-align: center;
-      color: #000;
+      color: #7719aa;
     }
     .step-title {
       font-size: 15px;
       color: #000;
       padding-left: 10px;
-      border-left: 4px solid #eda933;
+      border-left: 4px solid #7719aa;
       .not-selected {
         color: red;
         font-size: 12px;
       }
       .selected {
-        color: #2b569a;
+        color: #7719aa;
         font-size: 12px;
       }
     }
@@ -83,6 +92,9 @@
           margin-right: 10px;
         }
       }
+      .is-checked::before {
+        background-color: #7719aa;
+      }
       .ant-pagination {
         text-align: right;
         margin-top: 5px;
@@ -100,7 +112,7 @@
         padding-bottom: 0;
       }
       .ant-time-picker-input:hover {
-        border-color: #3d78d5;
+        border-color: #7719aa;
       }
       .ant-select {
         width: 300px;
@@ -110,9 +122,40 @@
           border-radius: 0;
         }
         .ant-select-selection:hover {
-          border-color: #3d78d5;
+          border-color: #7719aa;
         }
       }
+      .ant-select-focused {
+        .ant-select-selection {
+          border-color: #7719aa;
+        }
+      }
+    }
+    .ms-Button--primary {
+      background-color: #7719aa ;
+    }
+    .ms-Button--primary:hover {
+      background-color: #910fd8 ;
+    }
+    .ms-Button--primary:active {
+      background-color: #7719aa ;
+    }
+    .ms-TextField-fieldGroup::after {
+      border-color: #7719aa;
+    }
+    .error {
+      .ms-TextField-fieldGroup::after {
+        border-color: red;
+      }
+    }
+    .ms-ChoiceField-field.is-checked {
+      border-color: #7719aa;
+    }
+    .ms-ChoiceField-field.is-checked::before {
+      border-color: #7719aa;
+    }
+    .ms-ChoiceField-field.is-checked::after {
+      border-color: #7719aa;
     }
   }
 }

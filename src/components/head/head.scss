@@ -3,7 +3,6 @@
   height: 48px;
   line-height: 48px;
   display: flex;
-  background-color: #2B579A;
   box-sizing: border-box;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -20,9 +19,6 @@
       .ms-Icon {
         color: #fff;
       }
-    }
-    .ms-Button:hover {
-      background-color: #002050;
     }
     .title {
       color: #fff;
@@ -52,6 +48,33 @@
     background-color: #fff !important;
     i {
       color: #000 !important;
+    }
+  }
+}
+
+.tag-head {
+  background-color: #2B579A;
+  .button-head-group {
+    .ms-Button:hover {
+      background-color: #002050;
+    }
+  }
+}
+
+.mould-head {
+  background-color: #217346;
+  .button-head-group {
+    .ms-Button:hover {
+      background-color: #094a1b;
+    }
+  }
+}
+
+.task-head {
+  background-color: #7719AA;
+  .button-head-group {
+    .ms-Button:hover {
+      background-color: #4b0c6d;
     }
   }
 }

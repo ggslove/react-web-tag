@@ -1,7 +1,9 @@
 import { observer } from "mobx-react";
 import React from "react";
+import classNames from 'classnames';
 import { ChoiceGroup, TextField } from 'office-ui-fabric-react';
 import { tagTypeList, tagTypes } from "../../constants/commonConstants";
+import { rightTypes } from "../../constants/operationConstants";
 
 interface IProps {
   name: string,
@@ -16,7 +18,7 @@ export default class BasicInfo extends  React.Component<IProps> {
     const { name, description, type, changeBasicInfo } = this.props;
     return (
       <div className='basic-info'>
-        <TextField label='任务名' required value={name} onChange={(e, newValue) => changeBasicInfo({ description, type, name: newValue || '' })} errorMessage={name ? '' : "任务名不可为空"} />
+        <TextField label='任务名' required className={classNames({ error: !name })} value={name} onChange={(e, newValue) => changeBasicInfo({ description, type, name: newValue || '' })} errorMessage={name ? '' : "任务名不可为空"} />
         <TextField label='描述' rows={6} multiline value={description} onChange={(e, newValue) => changeBasicInfo({ name, type, description: newValue || '' })} />
         <ChoiceGroup
           required

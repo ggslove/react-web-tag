@@ -40,7 +40,7 @@ export default class TaskList extends  React.Component<IProps> {
             return <TaskItem  key={`task-${index}`} system={system} taskItem={taskItem} activeId={activeId} task={task}  />;
           })}
         </div>
-        <Pagination {...pagination} size="small" simple />
+        <Pagination {...pagination} size="small"/>
       </div>
     );
   }

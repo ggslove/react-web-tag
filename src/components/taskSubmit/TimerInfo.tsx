@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import React from "react";
 import { ChoiceGroup, Label } from 'office-ui-fabric-react';
 import moment from 'moment';
-import { TimePicker, Select  } from 'antd';
+import { Select, TimePicker } from 'antd';
 import { timeRates, weekDays } from "src/constants/commonConstants";
 
 const { Option } = Select;
@@ -22,7 +22,7 @@ export default class TimerInfo extends  React.Component<IProps> {
   render() {
     const { timeRate, dayValue, weekValue, monthValue, changeTimerInfo } = this.props;
     const monthDays: { text: string, code: string }[] = [];
-    for(let i = 0; i < 32; i++ ) {
+    for(let i = 1; i < 32; i++ ) {
       monthDays.push({ text: `${i}日`, code: `${i}` });
     }
     return (
@@ -55,6 +55,8 @@ export default class TimerInfo extends  React.Component<IProps> {
           mode="multiple"
           placeholder="周选择,可多选"
           value={weekValue}
+          style={{ display: timeRate === timeRates.week ? 'block' : 'none' }}
+          onChange={(value: string[]) => changeTimerInfo({ timeRate, dayValue, monthValue, weekValue: value }) }
         >
           {weekDays.map((item: { text: string, code: string }) => {
             return (<Option key={item.code}>{item.text}</Option>);
@@ -64,6 +66,8 @@ export default class TimerInfo extends  React.Component<IProps> {
           mode="multiple"
           placeholder="日期选择,可多选"
           value={monthValue}
+          style={{ display: timeRate === timeRates.month ? 'block' : 'none' }}
+          onChange={(value: string[]) => changeTimerInfo({ timeRate, dayValue, weekValue, monthValue: value }) }
         >
           {monthDays.map((item: { text: string, code: string }) => {
             return (<Option key={item.code}>{item.text}</Option>);

@@ -40,6 +40,7 @@ class Entry extends React.Component<IProps> {
     initializeIcons();
     this.props.user.checkLogin();
     window.onresize = () => this.props.system.resize();
+    window.onhashchange = () => this.props.system.changeHashRouter();
   }
 
   render() {

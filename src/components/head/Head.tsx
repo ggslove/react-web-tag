@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { inject, observer } from 'mobx-react';
 import { CommandBarButton, IIconProps } from 'office-ui-fabric-react';
 import { Badge } from 'antd';
-import { panelKeys } from 'src/constants/headConstants';
+import { panelKeys, urlParams } from 'src/constants/headConstants';
 import UserPanel from './UserPanel';
 import NoticePanel from './NoticePanel';
 import MenuPanel from './MenuPanel';
@@ -40,10 +40,13 @@ export default class Head extends  React.Component<IProps, IState> {
   };
 
   render() {
-    const { user } = this.props;
+    const { user, system } = this.props;
+    const { routerPath } = system;
+    const path = routerPath.split('/')[1] || '';
+    const params = urlParams[path];
     const { activePanel, unReadNum } = this.state;
     return (
-      <div className="head">
+      <div className={`head ${ params ? params.className : '' }`} >
         <div className="button-head-group">
           <CommandBarButton
             iconProps={menuIcon}
@@ -51,7 +54,7 @@ export default class Head extends  React.Component<IProps, IState> {
             title='菜单'
             onClick={() => this.setState({ activePanel: panelKeys.MENU })}
           />
-          <span className='title'>标签系统</span>
+          <span className='title'>{params ? params.text : '路径有误'}</span>
           <div className="button-right-group">
             <Badge count={unReadNum}>
               <CommandBarButton

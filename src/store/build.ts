@@ -93,7 +93,7 @@ class Build {
       this.rowConfigs.forEach((rowConfig: IRowConfig) => {
         if (rowConfig.rowId === this.activeId) {
           rowConfig.type = val;
-          rowConfig.defaultValue = undefined;
+          rowConfig.defaultValue = val === inputTypes.input ? '' : undefined;
           rowConfig.maxValue = undefined;
           rowConfig.minValue = undefined;
         }

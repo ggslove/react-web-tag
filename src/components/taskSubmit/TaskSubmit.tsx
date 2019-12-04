@@ -1,9 +1,8 @@
 import { inject, observer } from "mobx-react";
 import React from "react";
-import { Anchor } from 'antd';
+import { Anchor, Icon } from 'antd';
 import classNames from "classnames";
 import { DefaultButton, PrimaryButton, Text } from 'office-ui-fabric-react';
-import * as moment from 'moment';
 import { System } from "src/store";
 import TagSelector from './TagSelector';
 import BasicInfo from './BasicInfo';
@@ -66,11 +65,14 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
 
   _clickStep = (link: {title: React.ReactNode, href: string}) => {
     let ins = 0;
+    console.log(link);
     const missSteps = stepList.filter((step: IStep, index: number) => {
-      if (step.text === link.title) {
+      // @ts-ignore
+      if (step.text === link.title.props.children[0]) {
         ins = index
       }
-      return  step.text === link.title;
+      // @ts-ignore
+      return  step.text === link.title.props.children[0];
     });
     if (missSteps.length > 0) {
       const code = missSteps[0].code;
@@ -99,7 +101,7 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
         if (stepDom) {
           // @ts-ignore
           const offsetTop: number = stepDom.offsetTop;
-          if (offsetTop <= wst + 160) {
+          if (offsetTop <= wst + 250) {
             this.setState({ current: step.code });
             const ball: any = document.querySelector(".ant-anchor-ink-ball");
             if (ball) {
@@ -111,21 +113,32 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
     }
   };
 
+  getIsBasicFinished = (): boolean => {
+    const { name, type } = this.state.basicInfos;
+    return !!name && !!type;
+  };
+
+  getIsTimerFinished = (): boolean => {
+    const { timeRate, weekValue, monthValue, dayValue } = this.state.timerInfo;
+    if (timeRate === timeRates.day) {
+      return !!dayValue;
+    } else if (timeRate === timeRates.week) {
+      return weekValue.length > 0 && !!dayValue;
+    } else if (timeRate === timeRates.month) {
+      return monthValue.length > 0 && !!dayValue;
+    }
+    return false;
+  };
+
   render() {
     const { mainHeight } = this.props.system;
     const { current, selectedTag, basicInfos, timerInfo } = this.state;
     return (
       <div id='wy-scroll-layout' style={{ height: mainHeight }} className="task-submit" onScroll={this._scrollBody} >
         <Anchor affix={false} onClick={(e, f) => {this._clickStep(f)}} showInkInFixed={true} >
-          {stepList.map((step: IStep) => {
-            return (
-              <Link
-                href="/#/taskSubmit"
-                title={step.text}
-                className={classNames({ active: current === step.code  })}
-                key={step.code}
-              />);
-          })}
+          <Link href="/#/taskSubmit" title={<span>标签选择<Icon type={selectedTag ? "check-circle" : "close-circle"} /></span>} className={classNames({ active: current === 'tag'  })} />
+          <Link href="/#/taskSubmit" title={<span>基本信息<Icon type={this.getIsBasicFinished() ? "check-circle" : "close-circle"}/></span>} className={classNames({ active: current === 'basic'  })} />
+          <Link href="/#/taskSubmit" title={<span>定时配置<Icon type={this.getIsTimerFinished() ? "check-circle" : "close-circle"}/></span>} className={classNames({ active: current === 'timer'  })} />
         </Anchor>
         <div className='center'>
           <Text variant='xLarge' className='font600 task-title'>任务提交</Text>
@@ -140,12 +153,12 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
             <div className='step-title'>基本信息</div>
             <BasicInfo {...basicInfos} changeBasicInfo={this._changeBasicInfo} />
           </div>
-          <div id='timer' style={{ height: 500 }}>
+          <div id='timer' style={{ height: 400 }}>
             <div className='step-title'>定时配置</div>
             <TimerInfo {...timerInfo} changeTimerInfo={this._changeTimerInfo} />
           </div>
           <div className='submit-button'>
-            <PrimaryButton text='确认' />
+            <PrimaryButton text='确认' disabled={!(selectedTag && this.getIsBasicFinished() && this.getIsTimerFinished())} />
             <DefaultButton text='取消' />
           </div>
         </div>
