@@ -67,17 +67,17 @@ export default class LeftDynamicItem extends  React.Component<IProps, IState> {
   render() {
     const { operation, item } = this.props;
     const { visible, isShowEditDialog, isShowShareDialog } = this.state;
-    const { graphIds, checkGraphId } = operation;
+    const { graphIds, checkGraphId, activeGraphId } = operation;
     return (
       <div
-        className={classNames("tag-item", {active: graphIds.indexOf(item) > -1, 'action-bar': visible})}
+        className={classNames("tag-item", {active: graphIds.indexOf(item) > -1, 'action-bar': visible}, {isChecked: activeGraphId === item })}
         onDoubleClick={() => checkGraphId(item)}
         title={item}
       >
         <Icon iconName="TagSolid" className="tag-icon" />
         <Text className="tag-name">{item}</Text>
         {this._showIcon()}
-        <Icon iconName="PinnedSolid" />
+        <Icon iconName="PinnedSolid" className="ping-icon" />
         {isShowEditDialog ? <TagEditDialog operation={operation} closeDialog={this._closeDialog} item={item}/> : null}
         {isShowShareDialog ? <TagShareDialog operation={operation} closeDialog={this._closeDialog} item={item}/> : null}
       </div>

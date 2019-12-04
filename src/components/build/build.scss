@@ -281,3 +281,73 @@
     border-color: #357347;
   }
 }
+
+.sql-dialog {
+  .ms-Dialog-main {
+    position: absolute;
+    top: 50px;
+    .ms-Dialog-lgHeader {
+      border-color: #357347;
+      .ms-Dialog-title {
+        color: #357347;
+      }
+      .is-active {
+        border-bottom: 2px solid #357347;
+      }
+      .ms-SearchBox {
+        border-color: #47ae65;
+        i {
+          color: #357347;
+        }
+      }
+      .is-checked::before {
+        background-color: #357347;
+      }
+      .ms-Button--primary {
+        background-color: #357347 ;
+      }
+      .ms-Button--primary:hover {
+        background-color: #47ae65 ;
+      }
+      .ms-Button--primary:active {
+        background-color: #357347 ;
+      }
+      .ant-pagination {
+        margin-top: 5px;
+        .ant-pagination-next:not(.ant-pagination-disabled):hover, .ant-pagination-prev:not(.ant-pagination-disabled):hover {
+          i {
+            color: #357347;
+          }
+        }
+        .ant-pagination-next:not(.ant-pagination-disabled):focus, .ant-pagination-prev:not(.ant-pagination-disabled):focus {
+          i {
+            color: #357347;
+          }
+        }
+        .ant-pagination-item-active {
+          border-color: #357347 !important;
+          a {
+            color: #357347;
+          }
+        }
+        .anticon-double-right, .anticon-double-left {
+          color: #357347 !important;
+        }
+        .ant-pagination-item:focus a, .ant-pagination-item:hover a {
+          color: #357347;
+        }
+        .ant-pagination-item-active:focus, .ant-pagination-item-active:hover {
+          border-color: #357347;
+        }
+      }
+    }
+    .ms-MessageBar {
+      width: calc(100% - 300px);
+      float: right;
+    }
+    .page {
+      float: right;
+      margin-top: 5px;
+    }
+  }
+}

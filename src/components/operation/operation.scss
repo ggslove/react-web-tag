@@ -172,7 +172,7 @@
               color: #186798;
             }
           }
-          .tag-item:not(.active):hover {
+          .tag-item:hover {
             background-color: aliceblue;
             .tag-name {
               color: #186798;
@@ -193,17 +193,18 @@
             }
           }
           .active {
-            background-color: #d6dce1;
+            background-color: #fff;
             .tag-name {
               color: #186798;
               font-weight: 600;
             }
-            i:not(.tag-icon):not(.more-icon) {
-              visibility: visible;
-              color: #186798;
-              font-weight: 600;
-            }
             .tag-icon, .more-icon {
+              color: #186798;
+            }
+          }
+          .isChecked {
+            .ping-icon {
+              visibility: visible !important;
               color: #186798;
             }
           }

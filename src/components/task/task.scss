@@ -57,7 +57,7 @@
       }
       .overall, .task-item {
         i {
-          font-size: 14px;
+          font-size: 16px;
           float: left;
           margin-right: 5px;
         }
@@ -416,6 +416,27 @@
     }
     .ms-Button:not(.is-disabled) {
       color: #7719aa;
+    }
+  }
+}
+
+.task-edit {
+  .ms-Dialog-lgHeader {
+    border-color: #7719aa;
+    .ms-Dialog-title {
+      color: #7719aa;
+    }
+    .ms-TextField-fieldGroup::after {
+      border-color: #7719aa;
+    }
+    .ms-Button--primary {
+      background-color: #7719aa ;
+    }
+    .ms-Button--primary:hover {
+      background-color: #910fd8 ;
+    }
+    .ms-Button--primary:active {
+      background-color: #7719aa ;
     }
   }
 }

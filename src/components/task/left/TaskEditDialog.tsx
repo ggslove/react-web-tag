@@ -54,6 +54,7 @@ export default class TaskEditDialog extends  React.Component<IProps, IState> {
       <Dialog
         hidden={false}
         onDismiss={closeDialog}
+        className='task-edit'
         dialogContentProps={{
           type: DialogType.largeHeader,
           title: '修改任务信息',
@@ -68,7 +69,7 @@ export default class TaskEditDialog extends  React.Component<IProps, IState> {
               <Label>名称</Label>
             </Col>
             <Col md={9}>
-              <TextField required value={name} onChange={this._nameChange} errorMessage={name ? '' : "标签名不可为空"}  />
+              <TextField required value={name} onChange={this._nameChange} errorMessage={name ? '' : "任务名不可为空"}  />
             </Col>
           </Row>
           <Row>

@@ -258,21 +258,6 @@ body {
   box-sizing: content-box;
 }
 
-.sql-dialog {
-  .ms-Dialog-main {
-    position: absolute;
-    top: 50px;
-    .ms-MessageBar {
-      width: calc(100% - 300px);
-      float: right;
-    }
-    .page {
-      float: right;
-      margin-top: 5px;
-    }
-  }
-}
-
 .card-hover{
   height: 200px;
   padding: 5px;
