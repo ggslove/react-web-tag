@@ -130,6 +130,10 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
     return false;
   };
 
+  private _backHistory = () => {
+    window.history.back();
+  };
+
   render() {
     const { mainHeight } = this.props.system;
     const { current, selectedTag, basicInfos, timerInfo } = this.state;
@@ -159,7 +163,7 @@ export default class TaskSubmitDom extends  React.Component<IProps, IState> {
           </div>
           <div className='submit-button'>
             <PrimaryButton text='确认' disabled={!(selectedTag && this.getIsBasicFinished() && this.getIsTimerFinished())} />
-            <DefaultButton text='取消' />
+            <DefaultButton text='取消' onClick={this._backHistory} />
           </div>
         </div>
       </div>

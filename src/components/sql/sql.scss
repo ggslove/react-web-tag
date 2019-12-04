@@ -4,11 +4,18 @@
     height: calc(100% - 20px);
     padding: 10px;
     float: left;
-    background-color: #e5e7e8;
+    background-color: #e5ede8;
     .sql-list {
       overflow: hidden;
+      .is-active {
+        border-bottom: 2px solid;
+      }
       .ms-SearchBox {
         background-color: transparent;
+        border-color: #357347;
+        i {
+          color: #217346;
+        }
       }
       .sqls {
         overflow-y: auto;
@@ -32,13 +39,10 @@
             visibility: hidden;
           }
         }
-        .sql-item-2 {
-          background-color: #dcdbdb;
-        }
         .sql-item:not(.active):hover {
           background-color: #c0c6ca;
           .sql-name {
-            color: #186798;
+            color: #357347;
           }
           i {
             visibility: visible;
@@ -46,18 +50,34 @@
         }
         .active {
           .sql-name {
-            color: #186798;
+            color: #357347;
             font-weight: 600;
           }
           i {
             visibility: visible;
-            color: #186798;
+            color: #357347;
             font-weight: 600;
           }
         }
       }
-      .ant-pagination {
+      .ms-Pagination-container {
         text-align: center;
+        .ms-ComboBox-container {
+          .ms-ComboBox {
+            height: 26px;
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+          .ms-ComboBox:hover {
+            border: 1px solid #357347;
+          }
+          .ms-ComboBox::after {
+            border-color: #357347;
+          }
+        }
+        .ms-Button:not(.is-disabled) {
+          color: #357347;
+        }
       }
     }
   }
@@ -142,7 +162,7 @@
     height: calc(100% - 40px);
     padding: 20px;
     float: left;
-    background-color: #e5e7e8;
+    background-color: #e5ede8;
     .ms-Stack {
     }
     .button-group {
@@ -173,5 +193,25 @@
   }
   .letter {
     letter-spacing: 1px;
+  }
+  .ms-Button--primary {
+    background-color: #357347 ;
+  }
+  .ms-Button--primary:hover {
+    background-color: #47ae65 ;
+  }
+  .ms-Button--primary:active {
+    background-color: #357347 ;
+  }
+  .ms-TextField-fieldGroup::after {
+    border-color: #357347;
+  }
+  .ms-Dropdown:focus {
+    .ms-Dropdown-title {
+      border-color: #357347;
+    }
+  }
+  .ms-Dropdown-title:hover, .ms-Dropdown-title:active {
+    border-color: #357347;
   }
 }

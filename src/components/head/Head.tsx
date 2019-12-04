@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { inject, observer } from 'mobx-react';
-import { CommandBarButton, IIconProps } from 'office-ui-fabric-react';
+import { CommandBarButton, IIconProps, Icon } from 'office-ui-fabric-react';
 import { Badge } from 'antd';
 import { panelKeys, urlParams } from 'src/constants/headConstants';
 import UserPanel from './UserPanel';
@@ -39,6 +39,10 @@ export default class Head extends  React.Component<IProps, IState> {
     this.setState({ unReadNum: 0 });
   };
 
+  private _backHistory = () => {
+    window.history.back();
+  };
+
   render() {
     const { user, system } = this.props;
     const { routerPath } = system;
@@ -55,6 +59,7 @@ export default class Head extends  React.Component<IProps, IState> {
             onClick={() => this.setState({ activePanel: panelKeys.MENU })}
           />
           <span className='title'>{params ? params.text : '路径有误'}</span>
+          <span className='reply-icon'>{ params && params.isReply ?  <Icon iconName='Reply' title='返回' onClick={this._backHistory}/> : null }</span>
           <div className="button-right-group">
             <Badge count={unReadNum}>
               <CommandBarButton

@@ -98,6 +98,31 @@
       .ant-pagination {
         text-align: right;
         margin-top: 5px;
+        .ant-pagination-next:not(.ant-pagination-disabled):hover, .ant-pagination-prev:not(.ant-pagination-disabled):hover {
+          i {
+            color: #7719aa;
+          }
+        }
+        .ant-pagination-next:not(.ant-pagination-disabled):focus, .ant-pagination-prev:not(.ant-pagination-disabled):focus {
+          i {
+            color: #7719aa;
+          }
+        }
+        .ant-pagination-item-active {
+          border-color: #7719aa !important;
+          a {
+            color: #7719aa;
+          }
+        }
+        .anticon-double-right, .anticon-double-left {
+          color: #7719aa !important;
+        }
+        .ant-pagination-item:focus a, .ant-pagination-item:hover a {
+          color: #7719aa;
+        }
+        .ant-pagination-item-active:focus, .ant-pagination-item-active:hover {
+          border-color: #7719aa;
+        }
       }
     }
     .basic-info {

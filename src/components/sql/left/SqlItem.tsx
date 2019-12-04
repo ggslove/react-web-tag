@@ -18,7 +18,7 @@ export default class SqlItem extends  React.Component<IProps> {
     const { checkTag, activeSqlId } = sql;
     return (
       <div
-        className={classNames("sql-item", {"sql-item-2": index % 2}, {active: activeSqlId === `${index}`})}
+        className={classNames("sql-item", {active: activeSqlId === `${index}`})}
         onClick={() => checkTag(`${index}`)}
         title={tagName}
       >

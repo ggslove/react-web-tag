@@ -400,4 +400,22 @@
   .ms-Button--primary:active {
     background-color: #7719aa ;
   }
+  .ms-Pagination-container {
+    .ms-ComboBox-container {
+      .ms-ComboBox {
+        height: 26px;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .ms-ComboBox:hover {
+        border: 1px solid #7719aa;
+      }
+      .ms-ComboBox::after {
+        border-color: #7719aa;
+      }
+    }
+    .ms-Button:not(.is-disabled) {
+      color: #7719aa;
+    }
+  }
 }

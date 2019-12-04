@@ -13,16 +13,16 @@ export const INITIAL_ROUTE = {
 
 export const modelLinks: IModelLink[] = [
   {
-    img: "/img/home.png", name: "标签市场", link: "/#"
+    img: "/img/home.png", name: "标签中心", link: "/#"
   },
   {
     img: "/img/draw.png", name: "标签搭建", link: "/#/operation"
   },
   {
-    img: "/img/task.png", name: "任务管理", link: "/#"
+    img: "/img/task.png", name: "任务中心", link: "/#/task"
   },
   {
-    img: "/img/system.png", name: "后台管理", link: "/#/back"
+    img: "/img/system.png", name: "模板中心", link: "/#/back"
   },
 ];
 

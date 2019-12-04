@@ -77,4 +77,18 @@
       background-color: #4b0c6d;
     }
   }
+  .reply-icon {
+    i {
+      font-size: 15px;
+      color: #cac4c4;
+      height: 24px;
+      line-height: 24px;
+      width: 24px;
+      text-align: center;
+      cursor: pointer;
+    }
+    i:hover {
+      color: #fff;
+    }
+  }
 }
