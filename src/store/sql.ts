@@ -1,9 +1,13 @@
 import { action, observable } from 'mobx';
 import { IBasicInfo, ISelectCol } from "src/models/sql";
+import { getWhereCols } from "src/util/sql";
 import { IPage } from "src/models/operation";
 
 const { Parser } = require('node-sql-parser');
 const parser = new Parser();
+const opt = {
+  database: 'MySQL'
+};
 
 // SQL编辑
 class Sql {
@@ -44,27 +48,14 @@ class Sql {
   };
 
   @action changeSqlValue = (sqlValue: string) => {
-    let whereList: any[] = [];
-    const getWhereCol = (where: any) => {
-      if (where) {
-        const { left, right, type } = where;
-        if (type === 'binary_expr') {
-          if (left) {
-            getWhereCol(left);
-          }
-          if (right) {
-            getWhereCol(right);
-          }
-        } else if (type === 'column_ref'){
-          whereList.push(where);
-        }
-      }
-    };
     try {
-      const ast = parser.astify(sqlValue);
-      console.log(ast);
+      let sqlPar = sqlValue.indexOf(';') === sqlValue.length - 1 ? sqlValue : `${sqlValue};`;
+      const ast = parser.astify(sqlPar, opt);
+      const whereCols = getWhereCols(ast);
+      // const sql = parser.sqlify(ast, opt);
+      // console.log(sql);
       if (ast.length > 0 && ast[0] && ast[0].type === 'select') {
-        const { columns, where } = ast[0];
+        const { columns } = ast[0];
         if (columns instanceof Array) {
           this.selectCols = columns.map((column: any) => {
             return { columnName: column.expr.column, columnAlias: column.as };
@@ -72,8 +63,7 @@ class Sql {
         } else {
           this.selectCols = [];
         }
-        getWhereCol(where);
-        this.whereCols = whereList;
+        this.whereCols = whereCols;
       } else {
         this.whereCols = [];
         this.selectCols = [];

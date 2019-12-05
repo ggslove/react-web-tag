@@ -149,8 +149,8 @@ export default class SqlDialog extends  React.Component<IProps, IState> {
               isMultiline={false}
               dismissButtonAriaLabel="Close"
             >
-            未选择SQL，请先选择SQL
-          </MessageBar> : null
+              未选择SQL，请先选择SQL
+            </MessageBar> : null
           }
           <div style={{ width: 200 }}>
             <SearchBox
